@@ -387,3 +387,159 @@ function register(name, role, ...skills){
 }
 
 register("Raj","Developer","HTML","Css","Javascript","Java","SQL","SpringBoot")
+
+
+                          //TASK - 4  30/04/2026
+
+// Task 1: Array Basics
+
+let arr1 = [10, 20, 30, 40, 50];
+
+console.log("First element: " + arr1[0])
+console.log("Last element: " + arr1[arr1.length-1])
+console.log("Length: " + arr1.length)
+
+// Task 2: Push & Pop
+
+let arr2 = [1,2,3];
+
+arr2.push(4,5)
+arr2.pop()
+
+console.log(arr2)
+
+ // Task 3: Includes Check
+//  Check if "javascript" exists in:
+
+let arr3 = ["html","css","javascript","react"];
+
+console.log(arr3.includes("javascript"))
+
+// Task 4: Filter Salaries
+
+let emp1 = [
+  {name:"A", salary:10000},
+  {name:"B", salary:50000},
+  {name:"C", salary:30000}
+];
+
+let checkSalary = emp1.filter((c,i,t)=>{
+    return c.salary>20000
+})
+console.log(checkSalary)
+
+// Task 5: Map Names
+//  From above array, return only:["A","B","C"]
+
+let names = emp1.map((c,i,t)=> c.name
+)
+console.log(names)
+
+// Task 6: Reduce Sum
+// Find total salary using reduce()
+
+let totalSalary = emp1.reduce((sum,c)=> sum + c.salary,0)
+console.log(totalSalary)
+
+// Task 7: Remove Duplicates
+
+let arr4 = [1,2,2,3,4,4,5];
+let duplicate =[...new Set(arr4)]
+console.log(duplicate)
+
+// Task 8: Find Largest Number
+
+let arr5 = [10, 200, 5, 90];
+let max = Math.max(...arr5)
+console.log(max)
+
+// Task 9: Reverse String WITHOUT reverse()
+
+let str = "hello";
+let reverse = ""
+
+for(let i=str.length-1; i>=0; i--){
+       reverse += str[i]
+}
+console.log(reverse)
+
+// Task 10: Group by Salary
+
+let emp2 = [
+  {name:"A", salary:10000},
+  {name:"B", salary:50000},
+  {name:"C", salary:10000}
+];
+let result1 = {}
+for(let i=0 ;i<emp2.length; i++){
+       let salary = emp2[i].salary
+       let name = emp2[i].name
+       if(result1[salary] === undefined){
+          result1[salary] = []
+       }
+       result1[salary].push(name)
+}
+console.log(result1)
+
+ // Task 11: Flatten Array (without flat)
+
+let arr6 = [1,[2,[3,[4]]]]
+
+function Flatten(ar){
+    let result2 = []
+
+    for(let item of ar){
+        if(Array.isArray(item)){
+            result2 = result2.concat(Flatten(item))
+        }
+        else{
+            result2.push(item)
+        }
+    }
+    return result2
+}
+console.log(Flatten(arr6))
+
+ // Task 12: Custom Sort (Descending)
+
+let arr7 = [5,2,9,1]
+
+arr7.sort((a,b)=> b-a)
+console.log(arr7)
+
+// Task 13: Find Second Largest
+
+let arr8 = [10, 50, 20, 40];
+
+let largest = arr8[0]
+let SecondLargest = null
+
+for(let i=1; i<arr8.length; i++){
+     if(arr8[i]>largest){
+       SecondLargest = largest;
+       largest = arr8[i]
+     }
+     else if(arr8[i] > SecondLargest && arr8[i] !== largest){
+           SecondLargest = arr8[i]
+     }
+}
+console.log(SecondLargest)
+
+// Task 14: Count Characters
+
+let str2 = "aabbccdde";
+let count = {}
+for (let i = 0; i < str2.length; i++) {
+
+    let char = str2[i]
+
+    if (count[char] === undefined) {
+        count[char] = 1
+    } else {
+        count[char]++
+    }
+}
+console.log(count)
+
+
+
