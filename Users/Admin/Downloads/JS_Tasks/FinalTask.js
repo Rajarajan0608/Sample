@@ -12,9 +12,7 @@ api.innerHTML = "<h2>Loading...</h2>"
 fetch(ApiLink)
 
 .then((data)=>{
-
     return data.json()
-
 })
 
 .then((objectData)=>{
@@ -24,23 +22,17 @@ fetch(ApiLink)
     displayProducts(allData)
 
     loadCategory(allData)
-
 })
 
 .catch(()=>{
-
     api.innerHTML = "<h2>Failed to load data</h2>"
-
 })
 
-
 function displayProducts(data){
-
-    api.innerHTML = ""
-
+       api.innerHTML = ""
     data.forEach((a)=>{
 
-        let dynamicTag = document.createElement("div")
+           let dynamicTag = document.createElement("div")
 
         dynamicTag.classList.add("card")
         dynamicTag.innerHTML = `<h3>${a.title.slice(0,50)}...</h3><img src="${a.image}" alt="${a.category}"> <p>${a.description.slice(0,60)}...</p>
@@ -50,15 +42,11 @@ function displayProducts(data){
         </button><button onclick="clk()">Add To Cart</button>`
 
         api.append(dynamicTag)
-
     })
-
 }
 
 function viewMore(title, desc){
-
     alert(title + " " + desc)
-
 }
 
 
@@ -69,20 +57,15 @@ searchInput.addEventListener("input", ()=>{
     let filteredData = allData.filter((item)=>{
 
         return item.title.toLowerCase().includes(value)
-
     })
-
     displayProducts(filteredData)
-
 })
 
 
 function loadCategory(data){
 
     let category = data.map((item)=>{
-
         return item.category
-
     })
 
 
@@ -91,15 +74,10 @@ let uniqueCategory = [...new Set(category)]
     uniqueCategory.forEach((cat)=>{
 
         let option = document.createElement("option")
-
         option.value = cat
-
         option.textContent = cat
-
         categoryFilter.append(option)
-
     })
-
 }
 
 categoryFilter.addEventListener("change", ()=>{
@@ -108,14 +86,12 @@ categoryFilter.addEventListener("change", ()=>{
     if(value == "all"){
         displayProducts(allData)
     }
-
     else{
         let filtered = allData.filter((item)=>{
             return item.category == value
         })
            displayProducts(filtered)
     }
-
 })
 
 sortFilter.addEventListener("change", ()=>{
@@ -130,13 +106,9 @@ sortFilter.addEventListener("change", ()=>{
         })
     }
     else if(value == "high"){
-
         sortedData.sort((a,b)=>{
-
             return b.price - a.price
-
         })
-
     }
     displayProducts(sortedData)
 })
